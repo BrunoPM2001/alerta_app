@@ -7,7 +7,11 @@ export default function HistoryScreen() {
     <ScrollView _light={{ bg: "gray.100" }} _dark={{ bg: "black" }} w="100%">
       {data.map((item) => {
         return (
-          <ListHistory id={item.id} nombre={item.nombre} estado={item.estado} />
+          <ListHistory
+            key={item.id}
+            nombre={item.nombre}
+            estado={item.estado}
+          />
         );
       })}
     </ScrollView>
