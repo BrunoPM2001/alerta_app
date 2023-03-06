@@ -1,9 +1,15 @@
-import { Center, Text } from "native-base";
+import { ScrollView } from "native-base";
+import data from "../../data_sample/historial.json";
+import ListHistory from "../components/historialList";
 
 export default function HistoryScreen() {
   return (
-    <Center _light={{ bg: "gray.100" }} _dark={{ bg: "black" }} flex={1}>
-      <Text>This is the history screen!</Text>
-    </Center>
+    <ScrollView _light={{ bg: "gray.100" }} _dark={{ bg: "black" }} w="100%">
+      {data.map((item) => {
+        return (
+          <ListHistory id={item.id} nombre={item.nombre} estado={item.estado} />
+        );
+      })}
+    </ScrollView>
   );
 }
