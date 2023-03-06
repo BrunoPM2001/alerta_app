@@ -1,9 +1,32 @@
-import { Center, Text } from "native-base";
+import { Fab, Icon, ScrollView } from "native-base";
+import { AntDesign } from "@expo/vector-icons";
+import data from "../../data_sample/grupos.json";
+import GroupContainer from "../components/grupoContainer";
 
-export default function MainScreen() {
+export default function MainScreen({ navigation }) {
   return (
-    <Center _light={{ bg: "gray.100" }} _dark={{ bg: "black" }} flex={1}>
-      <Text>This is the main screen!</Text>
-    </Center>
+    <>
+      <ScrollView _light={{ bg: "gray.100" }} _dark={{ bg: "black" }} w="100%">
+        {data.map((grupo) => {
+          return (
+            <GroupContainer
+              key={grupo.titulo}
+              title={grupo.titulo}
+              items={grupo.items}
+            />
+          );
+        })}
+      </ScrollView>
+      <Fab
+        renderInPortal={false}
+        shadow={0}
+        size="lg"
+        right={30}
+        bottom={50}
+        bg="amber.500"
+        icon={<Icon color="white" as={AntDesign} name="plus" size="lg" />}
+        onPress={() => navigation.navigate("Crear grupo")}
+      />
+    </>
   );
 }
