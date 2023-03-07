@@ -2,7 +2,7 @@ import { HStack, Text } from "native-base";
 
 const MyTabBar = ({ state, descriptors, navigation }) => {
   return (
-    <HStack mt="40px" h="30px">
+    <HStack mt="40px" h="35px">
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
 
@@ -38,7 +38,7 @@ const MyTabBar = ({ state, descriptors, navigation }) => {
             onPress={onPress}
             onLongPress={onLongPress}
             style={{ flex: 1 }}
-            color={isFocused ? "amber.500" : "black"}
+            color={isFocused ? "amber.400" : "black"}
           >
             {label}
           </Text>
