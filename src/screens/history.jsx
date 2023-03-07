@@ -4,7 +4,12 @@ import ListHistory from "../components/historialList";
 
 export default function HistoryScreen() {
   return (
-    <ScrollView _light={{ bg: "gray.100" }} _dark={{ bg: "black" }} w="100%">
+    <ScrollView
+      _light={{ bg: "gray.100" }}
+      _dark={{ bg: "black" }}
+      w="100%"
+      mt={3}
+    >
       {data.map((item) => {
         return (
           <ListHistory
