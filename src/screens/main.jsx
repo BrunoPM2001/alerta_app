@@ -23,9 +23,12 @@ export default function MainScreen({ navigation }) {
         size="lg"
         right={30}
         bottom={50}
-        bg="amber.500"
+        bg="amber.400"
         icon={<Icon color="white" as={AntDesign} name="plus" size="lg" />}
         onPress={() => navigation.navigate("Crear grupo")}
+        _pressed={{
+          bg: "amber.500",
+        }}
       />
     </>
   );
