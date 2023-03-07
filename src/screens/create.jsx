@@ -10,6 +10,7 @@ import {
 } from "native-base";
 import { AntDesign } from "@expo/vector-icons";
 import data from "../../data_sample/creacion.json";
+import SwipeList from "../components/swipeList";
 
 export default function CreateScreen() {
   return (
@@ -48,13 +49,7 @@ export default function CreateScreen() {
               <AntDesign name="pluscircleo" size={24} />
             </HStack>
             <ScrollView h="60%" w="95%" m="auto">
-              {data.map((item) => {
-                return (
-                  <Text my={3} key={item.nombre} fontSize={16}>
-                    {item.nombre}
-                  </Text>
-                );
-              })}
+              <SwipeList data={data} />
             </ScrollView>
           </Stack>
           <HStack justifyContent="space-between">
