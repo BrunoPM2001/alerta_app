@@ -10,17 +10,24 @@ export default function SwipeList({ data }) {
     console.log("This is open ", rowKey);
   };
 
+  const closeItem = (rowMap, rowKey) => {
+    if (rowMap[rowKey]) {
+      rowMap[rowKey].closeRow();
+    }
+  };
+
   const renderItem = ({ item, index }) => {
     return (
       <Pressable
         _light={{ bg: "gray.100" }}
         _dark={{ bg: "black" }}
         onPress={() => {
-          console.log("Touch!");
+          console.log("Presionaste un item");
         }}
+        py={3}
       >
         <HStack alignItems="center">
-          <Text my={3} key={item.nombre} fontSize={16}>
+          <Text key={item.nombre} fontSize={16}>
             {item.nombre}
           </Text>
         </HStack>
@@ -30,15 +37,15 @@ export default function SwipeList({ data }) {
 
   const renderHiddenItem = (data, rowMap) => {
     return (
-      <HStack>
+      <HStack h="100%">
         <Pressable
           w="25%"
           ml="auto"
-          p="1px"
+          p="2px"
           bg="red.500"
           justifyContent="center"
           onPress={() => {
-            console.log("Deleted");
+            console.log("Deleted ");
           }}
         >
           <VStack alignItems="center" justifyContent="space-around">
@@ -57,7 +64,7 @@ export default function SwipeList({ data }) {
       data={listData}
       renderItem={renderItem}
       renderHiddenItem={renderHiddenItem}
-      rightOpenValue={-130}
+      rightOpenValue={-70}
       previewRowKey={"0"}
       previewOpenValue={-40}
       previewOpenDelay={3000}
