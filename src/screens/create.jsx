@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Container,
   Input,
@@ -11,8 +12,11 @@ import {
 import { AntDesign } from "@expo/vector-icons";
 import data from "../../data_sample/creacion.json";
 import SwipeList from "../components/swipeList";
+import { ModalCrearEnpoint } from "../components/modals";
 
 export default function CreateScreen() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <Container
       _light={{ bg: "gray.100" }}
@@ -46,7 +50,14 @@ export default function CreateScreen() {
           <Stack>
             <HStack display="flex" justifyContent="space-between" py={5}>
               <Text fontSize={15}>Lista de endpoints:</Text>
-              <AntDesign name="pluscircleo" size={24} />
+              <AntDesign
+                name="pluscircleo"
+                size={24}
+                onPress={() => {
+                  console.log("Crear endpoint");
+                  setIsOpen(true);
+                }}
+              />
             </HStack>
             <ScrollView h="60%" w="95%" m="auto">
               <SwipeList data={data} />
@@ -62,6 +73,7 @@ export default function CreateScreen() {
           </HStack>
         </Stack>
       </FormControl>
+      <ModalCrearEnpoint isOpen={isOpen} setIsOpen={setIsOpen} />
     </Container>
   );
 }
